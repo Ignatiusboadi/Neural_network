@@ -63,7 +63,6 @@ class NeuralNetwork:
         # return dW1, dW2, db1, db2
 
     def accuracy(self, y_pred, y):
-        # Your code here
         y = y.reshape((-1, 1))
         y_pred = y.reshape((-1, 1))
         return np.mean((y == y_pred))
@@ -73,8 +72,46 @@ class NeuralNetwork:
         return (self.A2 >= 0.5).astype(float)
 
     def update(self, alpha):
-        # Your code here
         self.W1 -= alpha * self.dW1
         self.W2 -= alpha * self.dW2
         self.b1 -= alpha * self.db1
         self.b2 -= alpha * self.db2
+
+    def plot_decision_boundary(self):
+        x = np.linspace(-0.5, 2.5, 100)
+        y = np.linspace(-0.5, 2.5, 100)
+        xv, yv = np.meshgrid(x, y)
+        X_ = np.stack([xv, yv], axis=0)
+        X_ = X_.reshape(2, -1)
+        self.forward_pass(X_)
+        plt.figure()
+        plt.scatter(X_[0, :], X_[1, :], c=self.A2)
+        plt.show()
+
+    def fit(self, X_train, Y_train, X_test, Y_test, n_epochs, alpha):
+        self.init_params()
+        n_epochs = 10000
+        train_loss = []
+        test_loss = []
+        for i in range(n_epochs):
+            self.forward_pass(X_train)
+            self.backward_pass(X_train, Y_train)
+            self.update(alpha)
+
+            train_loss.append(self.loss(self.A2, Y_train))
+            self.forward_pass(X_test)
+            test_loss.append(self.loss(self.A2, Y_test))
+
+            if i % 1000 == 0:
+                self.plot_decision_boundary()
+
+        plt.plot(train_loss)
+        plt.plot(test_loss)
+
+        y_pred = self.predict(X_train)
+        train_accuracy = self.accuracy(y_pred, Y_train)
+        print("train accuracy :", train_accuracy)
+
+        y_pred = self.predict(X_test)
+        test_accuracy = self.accuracy(y_pred, Y_test)
+        print("test accuracy :", test_accuracy)
