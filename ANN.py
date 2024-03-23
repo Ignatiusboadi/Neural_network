@@ -90,7 +90,6 @@ class NeuralNetwork:
 
     def fit(self, X_train, Y_train, X_test, Y_test, n_epochs, alpha):
         self.init_params()
-        n_epochs = 10000
         train_loss = []
         test_loss = []
         for i in range(n_epochs):
