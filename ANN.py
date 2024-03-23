@@ -12,6 +12,10 @@ class NeuralNetwork:
         self.W2 = None
         self.b1 = None
         self.b2 = None
+        self.A1 = None
+        self.A2 = None
+        self.Z1 = None
+        self.Z2 = None
 
     def init_params(self):
         xav_mean_layer1 = 0
