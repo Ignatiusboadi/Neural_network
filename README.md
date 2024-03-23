@@ -23,7 +23,16 @@ This project requires the following dependencies:
 - Matplotlib
 
 ## Example Usage
-
+To train the neural network on a given dataset, where the units in the first layer are 2 and 10 in the second layer
+with 1 output, initialize the network as below. You can then apply the fit method after which the object can be used
+on new data. See `main.py` for more examples.
+```Copy code
+alpha = 0.001
+n_epochs = 10000
+h0, h1, h2 = 2, 10, 1
+neural_net = NeuralNetwork(h0, h1)
+neural_net.fit(X_train, Y_train, X_test, Y_test, n_epochs, alpha)
+```
 
 ## Contributing
 Contributions to this project are welcome! If you'd like to contribute, please fork the repository,
