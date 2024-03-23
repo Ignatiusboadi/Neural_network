@@ -101,11 +101,12 @@ class NeuralNetwork:
             self.forward_pass(X_test)
             test_loss.append(self.loss(self.A2, Y_test))
 
-            if i % 1000 == 0:
+            if i % 2000 == 0:
                 self.plot_decision_boundary()
 
         plt.plot(train_loss)
         plt.plot(test_loss)
+        plt.show()
 
         y_pred = self.predict(X_train)
         train_accuracy = self.accuracy(y_pred, Y_train)
