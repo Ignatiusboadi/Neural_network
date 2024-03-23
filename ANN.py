@@ -64,7 +64,7 @@ class NeuralNetwork:
 
     def accuracy(self, y_pred, y):
         y = y.reshape((-1, 1))
-        y_pred = y.reshape((-1, 1))
+        y_pred = y_pred.reshape((-1, 1))
         return np.mean((y == y_pred))
 
     def predict(self, X):
@@ -88,7 +88,7 @@ class NeuralNetwork:
         plt.scatter(X_[0, :], X_[1, :], c=self.A2)
         plt.show()
 
-    def fit(self, X_train, Y_train, X_test, Y_test, n_epochs, alpha):
+    def fit(self, X_train, Y_train, X_test, Y_test, n_epochs=10000, alpha=0.01):
         self.init_params()
         train_loss = []
         test_loss = []
