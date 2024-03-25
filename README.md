@@ -5,11 +5,13 @@ functions.
 ### Overview
 The project has two files:
 
-ANN.py: This file contains an implementation of a class for neural networks with two layers both lined with sigmoid
+- ANN.py: This file contains an implementation of a class for neural networks with two layers both lined with sigmoid
 activations.
-main.py: This file contains test data and examples. When executed plots of the training and loss will be made. Training
+- main.py: This file contains test data and examples. When executed plots of the training and loss will be made. Training
 and test accuracies will be displayed in the terminal.
-Installation and Requirements To use this project, clone the repository and install the required dependencies using pip:
+
+### Installation and Requirements 
+To use this project, clone the repository and install the required dependencies using pip:
 
 ```Copy code
 git clone https://github.com/Ignatiusboadi/Neural_network.git
@@ -32,6 +34,12 @@ n_epochs = 10000
 h0, h1, h2 = 2, 10, 1
 neural_net = NeuralNetwork(h0, h1)
 neural_net.fit(X_train, Y_train, X_test, Y_test, n_epochs, alpha)
+```
+
+After installation, you can run the code below in the terminal you cloned the project into to execute the main.py file.
+
+```Copy code
+python main.py
 ```
 
 ## Contributing
